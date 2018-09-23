@@ -12,10 +12,9 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      allInstruments: []
+      allInstruments: [],
+      selectedInstrument: null
     }
-
-
   }
 
 fetchInstruments = () => {
@@ -31,7 +30,11 @@ fetchInstruments = () => {
 componentDidMount(){
   this.fetchInstruments();
 }
-
+showDetail = (instrument) => {
+this.setState({
+  selectedInstrument: instrument
+})
+}
 
 
   render() {
@@ -40,7 +43,7 @@ componentDidMount(){
         <header className="App-header">
           <Navbar />
         </header><br/>
-        <InstrumentsContainer allInstruments={this.state.allInstruments}/>
+        <InstrumentsContainer showDetail={this.showDetail} selectedInstrument={this.state.selectedInstrument} allInstruments={this.state.allInstruments}/>
       </div>
     );
   }
