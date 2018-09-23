@@ -39,7 +39,7 @@ componentDidMount(){
       <div className="App">
         <header className="App-header">
           <Navbar />
-        </header>
+        </header><br/>
         <InstrumentsContainer allInstruments={this.state.allInstruments}/>
       </div>
     );

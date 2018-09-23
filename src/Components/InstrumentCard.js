@@ -1,24 +1,36 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Card, Header } from 'semantic-ui-react'
 
-const InstrumentCard = (props) => {
+class InstrumentCard extends React.Component {
+
+
+handleClick = () => {
+ this.props.showDetail(this.props.instrument)
+}
+
+
+
+render(){
   return(
-
-    <div className="ui card">
-      <h1>{props.instrument.brand} {props.instrument.name}</h1>
-      <div>
-        <img src={props.instrument.pic_url}  size='small' rounded/>
-      </div>
-      <div>
-        Color: {props.instrument.color} <br/>
-        Condition: {props.instrument.condition}<br/>
-        Price: ${props.instrument.price}<br/>
-      </div>
-    </div>
+    <Grid.Column>
+    <Card onClick={(e) => this.handleClick(e) }>
+      <Card.Header as='h3'>{this.props.instrument.brand} {this.props.instrument.name}</Card.Header>
+        {this.props.instrument.category_id === 2 ?
+        <Image src={this.props.instrument.pic_url} size='medium' rounded={true} centered verticalAlign='middle' />
+        :<Image src={this.props.instrument.pic_url} size='small' rounded={true} centered verticalAlign='middle' />}
+      <Card.Content>
+        <Header as='h5' >
+          Color: {this.props.instrument.color} <br/>
+          Condition: {this.props.instrument.condition}<br/>
+        </Header>
+        <Header as='h4' color='red' >
+          Price: ${this.props.instrument.price}<br/>
+        </Header>
+      </Card.Content>
+    </Card>
+    </Grid.Column>
   )
-
-
-
+  }
 }
 
 export default InstrumentCard;
