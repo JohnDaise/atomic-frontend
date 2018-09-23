@@ -1,5 +1,7 @@
 import React from 'react';
 import InstrumentCard from '../Components/InstrumentCard'
+import { Grid, Image } from 'semantic-ui-react'
+
 
 
 class InstrumentsContainer extends React.Component {
@@ -7,7 +9,13 @@ class InstrumentsContainer extends React.Component {
 
 render(){
   return(
-      <InstrumentCard />
+
+    this.props.allInstruments.map(instrument =>
+      <Grid columns={4}>
+        <InstrumentCard instrument={instrument} />
+        </Grid>
+      )
+
 
   )
 };

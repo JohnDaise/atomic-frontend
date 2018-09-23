@@ -37,13 +37,10 @@ componentDidMount(){
   render() {
     return (
       <div className="App">
-        <Navbar {..."hello. this is the navbar"}/>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <Navbar />
         </header>
-
-        <InstrumentsContainer {..."This is the Instruments Container"} allInstruments={this.state.allInstruments}/>
+        <InstrumentsContainer allInstruments={this.state.allInstruments}/>
       </div>
     );
   }
