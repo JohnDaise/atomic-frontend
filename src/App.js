@@ -56,16 +56,21 @@ handleChange = (input) =>{
 }
 
 filterList = () => {
-        let search = this.state.searchTerm.toLowerCase()
+      let search = this.state.searchTerm.toLowerCase()
   const newList = this.state.allInstruments.slice().filter( instrument =>
     search === instrument.brand.toLowerCase() ||
     search === instrument.name.toLowerCase() ||
+    search === instrument.color.toLowerCase() ||
     search === instrument.condition.toLowerCase() ||
     search === instrument.category.name.toLowerCase()
   )
+  if (newList.length === 0 && search.length > 0) {
+    window.alert("No Matches Found")
+  } else {
   this.setState({
     newList: newList
   })
+}
 }
 
 
