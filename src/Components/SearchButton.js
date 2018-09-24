@@ -10,8 +10,10 @@ this.handleClick = (e) => {
   props.filterList()
 }
 
+
+
   return(
-    <Button onClick={(e)=> this.handleClick(e)}> Search Inventory </Button>
+    <Button onClick={(e)=> this.handleClick(e)} > Search Inventory </Button>
   )
 
 
