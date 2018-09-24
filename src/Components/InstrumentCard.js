@@ -6,6 +6,7 @@ class InstrumentCard extends React.Component {
 
 handleClick = () => {
  this.props.showDetail(this.props.instrument)
+
 }
 
 
@@ -13,7 +14,7 @@ handleClick = () => {
 render(){
   return(
     <Grid.Column>
-    <Card onClick={(e) => this.handleClick(e) }>
+    <Card onClick={(e) => this.handleClick(e) }> 
         {this.props.instrument.category_id === 2 ?
         <Image src={this.props.instrument.pic_url} size='medium' rounded={true} centered verticalAlign='middle' />
         :<Image src={this.props.instrument.pic_url} size='small' rounded={true} centered verticalAlign='middle' />}

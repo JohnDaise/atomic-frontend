@@ -3,29 +3,13 @@ import { Grid, Image, Card, Header, Modal, Button } from 'semantic-ui-react'
 import InstrumentCard from './InstrumentCard'
 
 class SelectedInstrumentCard extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = { open: false }
 
-
-
-  }
-
-
-  handleOpen = () => {
-      this.setState({ open: true })
-  }
-
-  handleClose = () => {
-      this.setState({ open: false })
-  }
 
 
 render(){
-
       return(
-        <Modal open={this.props.instrument} closeIcon onClose={this.handleClose} image={true} children>
-         <Modal.Content image>
+        <Modal open={this.props.isModalOpen} onClick={()=> this.props.closeModal()} closeIcon image={"true"} children>
+         <Modal.Content image centered={"true"} >
           <Card >
             <Card.Header as='h3'>{this.props.instrument.brand} {this.props.instrument.name}</Card.Header>
             {this.props.instrument.category_id === 2 ?

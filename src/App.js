@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar'
+import Filter from './Containers/Filter'
 import InstrumentsContainer from './Containers/InstrumentsContainer'
 
 let URL = `http://localhost:3001/api/v1/instruments`;
@@ -13,7 +14,10 @@ class App extends Component {
     super()
     this.state={
       allInstruments: [],
-      selectedInstrument: null
+      newList: [],
+      selectedInstrument: null,
+      isModalOpen: false,
+      searchTerm: ""
     }
   }
 
@@ -24,16 +28,44 @@ fetchInstruments = () => {
         this.setState({
           allInstruments: json
         })
-        )
+      )
 }
 
 componentDidMount(){
   this.fetchInstruments();
 }
+
+
 showDetail = (instrument) => {
 this.setState({
-  selectedInstrument: instrument
-})
+  selectedInstrument: instrument,
+  isModalOpen: true
+  })
+}
+
+closeModal = () =>{
+  this.setState({
+    isModalOpen: false
+  })
+}
+
+handleChange = (input) =>{
+  this.setState({
+    searchTerm: input
+  })
+}
+
+filterList = () => {
+        let search = this.state.searchTerm.toLowerCase()
+  const newList = this.state.allInstruments.slice().filter( instrument =>
+    search === instrument.brand.toLowerCase() ||
+    search === instrument.name.toLowerCase() ||
+    search === instrument.condition.toLowerCase() ||
+    search === instrument.category.name.toLowerCase()
+  )
+  this.setState({
+    newList: newList
+  })
 }
 
 
@@ -41,9 +73,21 @@ this.setState({
     return (
       <div className="App">
         <header className="App-header">
-          <Navbar />
+          <Navbar className="navbar" />
         </header><br/>
-        <InstrumentsContainer showDetail={this.showDetail} selectedInstrument={this.state.selectedInstrument} allInstruments={this.state.allInstruments}/>
+       <Filter
+         searchTerm={this.state.searchTerm}
+         handleChange={this.handleChange}
+         filterList={this.filterList}
+         />
+        <InstrumentsContainer
+          showDetail={this.showDetail}
+          selectedInstrument={this.state.selectedInstrument}
+          allInstruments={this.state.allInstruments}
+          newList={this.state.newList}
+          isModalOpen={this.state.isModalOpen}
+          closeModal={this.closeModal}
+          />
       </div>
     );
   }
