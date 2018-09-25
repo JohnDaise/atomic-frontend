@@ -1,7 +1,8 @@
 import React from 'react';
 import InstrumentCard from '../Components/InstrumentCard'
 import SelectedInstrumentCard from '../Components/selectedInstrumentCard'
-import { Grid, Image, Card, Modal } from 'semantic-ui-react'
+import UpdateForm from '../Components/UpdateForm'
+import { Grid } from 'semantic-ui-react'
 
 
 
@@ -14,6 +15,7 @@ render(){
     <div>
       {this.props.isModalOpen ? <SelectedInstrumentCard
         instrument={this.props.selectedInstrument}
+        updateInstrument={this.props.updateInstrument}
         isModalOpen={this.props.isModalOpen}
         closeModal={this.props.closeModal}
         /> : null}

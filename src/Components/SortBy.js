@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown } from 'semantic-ui-react'
+import {  } from 'semantic-ui-react'
 
 
 
@@ -27,17 +27,15 @@ const SortBy = (props) => {
 
 
 this.handleChange = (e) => {
-
-  console.log(e.currentTarget)
+""
 }
 
 
   return(
-    console.log(this.choices),
     <div>
       <select>
         {this.choices.map( option =>
-          <option value={option.value}>{option.text}</option>
+          <option key={option.value} value={option.value}>{option.text}</option>
         )}
       </select>
     </div>

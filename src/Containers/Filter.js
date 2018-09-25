@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Button, Grid, Input } from 'semantic-ui-react'
+import {  } from 'semantic-ui-react'
 
 import SearchButton from '../Components/SearchButton';
 import SearchInput from '../Components/SearchInput';

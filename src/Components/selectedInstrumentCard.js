@@ -1,6 +1,7 @@
 import React from 'react';
+import UpdateForm from './UpdateForm'
 import { Grid, Image, Card, Header, Modal, Button, Icon } from 'semantic-ui-react'
-import InstrumentCard from './InstrumentCard'
+
 
 class SelectedInstrumentCard extends React.Component {
 
@@ -8,10 +9,19 @@ class SelectedInstrumentCard extends React.Component {
 
   handleClick = () => this.setState({ active: !this.state.active })
 
+  handleUpdate = () => {
+    console.log('render update form')
+  }
+
 render(){
    const { active } = this.state
       return(
-        <Modal open={this.props.isModalOpen} onClose={()=> this.props.closeModal()} closeIcon={true} image={"true"} children>
+        <Modal
+          open={this.props.isModalOpen}
+          onClose={()=> this.props.closeModal()}
+          closeIcon={true}
+          image={"true"}
+          children>
          <Modal.Content image centered={"true"} >
             <Grid>
               <Grid.Column width={5}>
@@ -47,7 +57,16 @@ render(){
                          <Icon name='heart' />
                         Favorite
                       </Button>
-                    </Button.Group>
+                    </Button.Group><br/>
+                  <Button secondary onClick={()=> console.log('Removed from Inventory')}>
+                         <Icon name='delete' />
+                        Remove
+                      </Button>
+                      <Modal.Actions>
+                        <UpdateForm
+                          instrument={this.props.instrument}
+                          updateInstrument={this.props.updateInstrument} />
+                      </Modal.Actions>
                   </div>
                 </Grid.Column>
               </Grid>

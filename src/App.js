@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar'
 import Filter from './Containers/Filter'
@@ -31,10 +30,15 @@ fetchInstruments = () => {
       )
 }
 
+
+
+
+
 componentDidMount(){
   this.fetchInstruments();
 }
 
+//CRUD
 
 showDetail = (instrument) => {
 this.setState({
@@ -42,6 +46,28 @@ this.setState({
   isModalOpen: true
   })
 }
+
+updateInstrument = () => {
+  //fetch to update instrument, need id in order to that, also need a form
+  console.log('updated!')
+  fetch(URL, {
+    method: "PATCH",
+    headers: {
+      //Authorization code
+    },
+    body: JSON.stringify({
+      //rest of patch fetch
+    })
+
+  }
+
+
+  )
+}
+
+
+
+//action functions
 
 closeModal = () =>{
   this.setState({
@@ -54,6 +80,7 @@ handleChange = (input) =>{
     searchTerm: input
   })
 }
+
 
 filterList = () => {
       let search = this.state.searchTerm.toLowerCase()
@@ -87,6 +114,7 @@ filterList = () => {
          />
         <InstrumentsContainer
           showDetail={this.showDetail}
+          updateInstrument={this.updateInstrument}
           selectedInstrument={this.state.selectedInstrument}
           allInstruments={this.state.allInstruments}
           newList={this.state.newList}

@@ -300,7 +300,7 @@ In the WebStorm menu `Run` select `Edit Configurations...`. Then click `+` and s
 
 Start your app by running `npm start`, then press `^D` on macOS or `F9` on Windows and Linux or click the green debug icon to start debugging in WebStorm.
 
-The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine. 
+The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine.
 
 ## Formatting Code Automatically
 
@@ -2031,7 +2031,7 @@ If you’re using [Apache HTTP Server](https://httpd.apache.org/), you need to c
     RewriteRule ^ index.html [QSA,L]
 ```
 
-It will get copied to the `build` folder when you run `npm run build`. 
+It will get copied to the `build` folder when you run `npm run build`.
 
 If you’re using [Apache Tomcat](http://tomcat.apache.org/), you need to follow [this Stack Overflow answer](https://stackoverflow.com/a/41249464/4878474).
 
@@ -2471,7 +2471,7 @@ To resolve this:
 1. Open an issue on the dependency's issue tracker and ask that the package be published pre-compiled.
   * Note: Create React App can consume both CommonJS and ES modules. For Node.js compatibility, it is recommended that the main entry point is CommonJS. However, they can optionally provide an ES module entry point with the `module` field in `package.json`. Note that **even if a library provides an ES Modules version, it should still precompile other ES6 features to ES5 if it intends to support older browsers**.
 
-2. Fork the package and publish a corrected version yourself. 
+2. Fork the package and publish a corrected version yourself.
 
 3. If the dependency is small enough, copy it to your `src/` folder and treat it as application code.
 
@@ -2484,3 +2484,63 @@ In the future, we might start automatically compiling incompatible third-party m
 ## Something Missing?
 
 If you have ideas for more “How To” recipes that should be on this page, [let us know](https://github.com/facebookincubator/create-react-app/issues) or [contribute some!](https://github.com/facebookincubator/create-react-app/edit/master/packages/react-scripts/template/README.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
+user1 = User.create(name:'Admin' , email:'admin@gmail.com')
+user2 = User.create(name:'Prince' , email:'prince@gmail.com')
+user3 = User.create(name:'Stevie' , email:'wonder@gmail.com')
+
+
+ "https://media.sweetwater.com/api/i/f-webp__q-82__ha-ca2f6a50f2a855ba__hmac-d22526535c108595f9319d7df69a1d7d48b63f3a/images/guitars/StratAO6ROWT/V1850409/V1850409-front-large.jpg",
+
+  "https://media.sweetwater.com/api/i/f-webp__q-82__ha-8e8eaeb440634799__hmac-00fdeb234126fe0e5ca707a44a84bc6946266698/images/guitars/Tele72CUBNAT/MX18029247/MX18029247-front-large.jpg",
+   "https://media.sweetwater.com/api/i/f-webp__q-82__ha-606e7efbef580c78__hmac-295b4f623f5b404863720408d236e52a4f62b8fd/images/guitars/JzMst59JRASG/CZ532085/CZ532085-body-large.jpg",
+
+    pic_url:"https://media.sweetwater.com/api/i/f-webp__q-82__ha-21e99a4347d83a0d__hmac-27e29ce609055360fd9fe0802c3455a984a7d203/images/guitars/SGS19HCCH/190002809/190002809-front-large.jpg"
+
+     pic_url:"https://media.sweetwater.com/api/i/f-webp__q-82__ha-79f20bf8e0726694__hmac-caa3ff66601b65a5efc42c05f9e05d9f150d4d5e/images/items/750/LPST18VSCH-large.jpg", price: 975,
+
+      "https://media.sweetwater.com/api/i/f-webp__q-82__ha-e7eaa4c2c0c0cf3a__hmac-5f63090f07b95e8af7465dc2c6cb38eb4394de99/images/items/750/Sub37-large.jpg",
+
+       pic_url:"https://media.sweetwater.com/api/i/f-webp__q-82__ha-2ea73974a2082213__hmac-4e3620d5ed3b69a2d757c5a9fd1124b0aeab2cc2/images/items/750/JunoDS76-large.jpg"
+
+        "https://media.sweetwater.com/api/i/f-webp__q-82__ha-94fbdd85b0aa094a__hmac-ac4cfcf3445c951ce51ba1f954745206f83cc2d0/images/items/750/Prologue08-large.jpg",
+
+         pic_url:"https://media.sweetwater.com/api/i/f-webp__q-82__ha-22bee3eb95c3a4d9__hmac-1782a36b49bc24e0f6be87539d12a0410add0ad6/images/items/750/Prophet6-large.jpg"
+
+          pic_url:"https://media.sweetwater.com/api/i/f-webp__q-82__ha-6b8f091a5cee1c1f__hmac-098dbb291051ce50569a83d66f7ce38671cb3a75/images/items/750/Montage7-large.jpg",
+
+           "https://media.sweetwater.com/api/i/f-webp__q-82__ha-130943870102f0c0__hmac-b446874db28eaaeafa4caa345d29a57aa8a94028/images/items/750/JBassAPRCAR-large.jpg",
+
+            "https://media.sweetwater.com/api/i/f-webp__q-82__ha-06bbeb9c0deda489__hmac-475cf95fbb8a6f82de6c290e9e3d00437645abf4/images/guitars/PBassAPRAQO/US18009768/US18009768-angle-large.jpg",
+
+             "https://media.sweetwater.com/api/i/f-webp__q-82__ha-137ce4f9643cc971__hmac-c3a047b09cefbb23628f73088d9a4180d6968016/images/guitars/MustBaPJPOWT/MX18081647/MX18081647-front-large.jpg",
+
+              pic_url:"https://media.sweetwater.com/api/i/f-webp__q-82__ha-1833b1e08c93b2ef__hmac-c1230f7497dc4f58be3ceb86240e7ee819eaa572/images/items/750/62Bass-large.jpg",
+               pic_url:"https://media.sweetwater.com/api/i/f-webp__q-82__ha-5147aa24a270f142__hmac-4e696e3ae25e45d3f7e777d72a23121ac2be4a86/images/items/750/StRay4HRCHB-large.jpg"
