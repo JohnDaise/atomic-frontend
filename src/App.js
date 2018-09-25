@@ -48,7 +48,7 @@ this.setState({
 
 updateInstrument = (e) => {
   //fetch to update instrument, need id in order to that, also need a form
-  let id = parseInt(e.target[7].id)
+  let id = parseInt(e.target[7].id.split("-")[1])
   fetch(URL + `/${id}`, {
     method: "PATCH",
     headers: {
@@ -74,6 +74,20 @@ updateInstrument = (e) => {
   this.closeUpdateModal();
   this.fetchInstruments();
 }
+
+deleteInstrument = (e) => {
+  let id = parseInt(e.target.id.split("-")[1])
+  fetch(URL + `/${id}`, {
+    method: "DELETE"
+  }).then(res=> res.json())
+  .then(json => {
+      this.fetchInstruments()
+    });
+  this.closeModal();
+}
+
+
+
 
 //action functions
 
@@ -140,6 +154,7 @@ filterList = () => {
         <InstrumentsContainer
           showDetail={this.showDetail}
           updateInstrument={this.updateInstrument}
+          deleteInstrument={this.deleteInstrument}
           selectedInstrument={this.state.selectedInstrument}
           allInstruments={this.state.allInstruments}
           newList={this.state.newList}

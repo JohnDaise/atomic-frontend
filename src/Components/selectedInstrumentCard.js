@@ -58,7 +58,7 @@ render(){
                         Favorite
                       </Button>
                     </Button.Group><br/>
-                  <Button secondary onClick={()=> console.log('Removed from Inventory')}>
+                  <Button secondary id={`${this.props.instrument.category_id}-${this.props.instrument.id}`} onClick={(e)=> this.props.deleteInstrument(e)}>
                          <Icon name='delete' />
                         Remove
                       </Button>

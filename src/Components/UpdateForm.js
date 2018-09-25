@@ -79,7 +79,7 @@ render(){
                   Price:
                 <input name="price" type="integer" value={this.state.price} onChange={(e)=> this.handleChange(e)}/>
                 </label>
-                <button name="update" type="submit" value="Submit" id={this.props.instrument.id} >Update</button>
+                <button name="update" type="submit" value="Submit" id={`${this.props.instrument.category_id}-${this.props.instrument.id}`} >Update</button>
 
           </Grid.Column>
           </Grid>

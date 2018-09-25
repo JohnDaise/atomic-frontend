@@ -16,6 +16,7 @@ render(){
       {this.props.isModalOpen ? <SelectedInstrumentCard
         instrument={this.props.selectedInstrument}
         updateInstrument={this.props.updateInstrument}
+        deleteInstrument={this.props.deleteInstrument}
         isModalOpen={this.props.isModalOpen}
         closeModal={this.props.closeModal}
         isUpdateModalOpen={this.props.isUpdateModalOpen}
