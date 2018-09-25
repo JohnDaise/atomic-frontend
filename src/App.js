@@ -16,6 +16,7 @@ class App extends Component {
       newList: [],
       selectedInstrument: null,
       isModalOpen: false,
+      isUpdateModalOpen: false,
       searchTerm: ""
     }
   }
@@ -32,8 +33,6 @@ fetchInstruments = () => {
 
 
 
-
-
 componentDidMount(){
   this.fetchInstruments();
 }
@@ -47,31 +46,49 @@ this.setState({
   })
 }
 
-updateInstrument = () => {
+updateInstrument = (e) => {
   //fetch to update instrument, need id in order to that, also need a form
-  console.log('updated!')
-  fetch(URL, {
+  let id = e.target[7].id
+  fetch(URL + `/${id}`, {
     method: "PATCH",
     headers: {
       //Authorization code
+      "Content-Type": "application/json; charset=utf-8"
     },
     body: JSON.stringify({
-      //rest of patch fetch
+        'brand': e.target[0].value,
+        'name': e.target[1].value,
+        'color': e.target[2].value,
+        'condition': e.target[3].value,
+        'description': e.target[4].value,
+        'pic_url': e.target[5].value,
+        'price': e.target[6].value
     })
+  }).then(res=> res.json())
+  .then(json => {console.log(json)
+  });
+  this.closeUpdateModal();
 
-  }
-
-
-  )
 }
-
-
 
 //action functions
 
-closeModal = () =>{
+closeModal = () => {
   this.setState({
     isModalOpen: false
+  })
+}
+
+openUpdateModal = () => {
+  this.setState({
+    isUpdateModalOpen: true,
+  })
+
+}
+
+closeUpdateModal = () => {
+  this.setState({
+    isUpdateModalOpen: false
   })
 }
 
@@ -80,6 +97,8 @@ handleChange = (input) =>{
     searchTerm: input
   })
 }
+
+//filter
 
 
 filterList = () => {
@@ -102,6 +121,8 @@ filterList = () => {
 
 
   render() {
+    console.log(this.state.isUpdateModalOpen)
+    console.log(this.state.isModalOpen)
     return (
       <div className="App">
         <header className="App-header">
@@ -120,6 +141,9 @@ filterList = () => {
           newList={this.state.newList}
           isModalOpen={this.state.isModalOpen}
           closeModal={this.closeModal}
+          isUpdateModalOpen={this.state.isUpdateModalOpen}
+          openUpdateModal={this.openUpdateModal}
+          closeUpdateModal={this.closeUpdateModal}
           />
       </div>
     );

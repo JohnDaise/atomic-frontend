@@ -65,7 +65,11 @@ render(){
                       <Modal.Actions>
                         <UpdateForm
                           instrument={this.props.instrument}
-                          updateInstrument={this.props.updateInstrument} />
+                          updateInstrument={this.props.updateInstrument}
+                          isUpdateModalOpen={this.props.isUpdateModalOpen}
+                          openUpdateModal={this.props.openUpdateModal}
+                          closeUpdateModal={this.props.closeUpdateModal}
+                           />
                       </Modal.Actions>
                   </div>
                 </Grid.Column>

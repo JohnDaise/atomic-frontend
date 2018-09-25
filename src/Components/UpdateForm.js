@@ -21,7 +21,6 @@ class UpdateForm extends React.Component {
 
 
 
-
 handleChange = (e) => {
     console.log([e.target.name], e.target.value),
     this.setState({
@@ -31,13 +30,24 @@ handleChange = (e) => {
 
 
 render(){
+//  this.props.closeUpdateModal
     return(
-      <Modal trigger={
+      console.log(this.props),
+      <Modal
+
+        open={this.props.isUpdateModalOpen}
+        onOpen={()=> this.props.openUpdateModal()}
+        onClose={()=> this.props.closeUpdateModal()}
+         trigger={
           <Button >
             Update
           </Button>}  >
-
-        <Form onSubmit={()=> this.props.updateInstrument()}>
+        <Modal.Content>
+        <Form onSubmit={(e)=>
+            {
+            e.preventDefault();
+            this.props.updateInstrument(e)}
+          }>
           <Grid>
             <Grid.Column width={6}>
                 <label>
@@ -70,11 +80,12 @@ render(){
                   Price:
                 <input name="price" type="integer" value={this.state.price} onChange={(e)=> this.handleChange(e)}/>
                 </label>
-                <button name="update" type="submit" value="Submit">Update</button>
+                <button name="update" type="submit" value="Submit" id={this.props.instrument.id} >Update</button>
 
           </Grid.Column>
           </Grid>
         </Form>
+        </Modal.Content>
       </Modal>
       )
     }

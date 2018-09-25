@@ -18,6 +18,9 @@ render(){
         updateInstrument={this.props.updateInstrument}
         isModalOpen={this.props.isModalOpen}
         closeModal={this.props.closeModal}
+        isUpdateModalOpen={this.props.isUpdateModalOpen}
+        openUpdateModal={this.props.openUpdateModal}
+        closeUpdateModal={this.props.closeUpdateModal}
         /> : null}
       <Grid centered columns={3} >
         { this.props.newList.length === 0 ? this.props.allInstruments.map(instrument =>
