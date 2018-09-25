@@ -32,7 +32,6 @@ handleChange = (e) => {
 render(){
 //  this.props.closeUpdateModal
     return(
-      console.log(this.props),
       <Modal
 
         open={this.props.isUpdateModalOpen}

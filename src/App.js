@@ -48,7 +48,7 @@ this.setState({
 
 updateInstrument = (e) => {
   //fetch to update instrument, need id in order to that, also need a form
-  let id = e.target[7].id
+  let id = parseInt(e.target[7].id)
   fetch(URL + `/${id}`, {
     method: "PATCH",
     headers: {
@@ -65,10 +65,14 @@ updateInstrument = (e) => {
         'price': e.target[6].value
     })
   }).then(res=> res.json())
-  .then(json => {console.log(json)
-  });
+  .then(json =>
+    this.setState({
+      selectedInstrument: json
+    })
+  );
+  console.log(this.showDetail(id))
   this.closeUpdateModal();
-
+  this.fetchInstruments();
 }
 
 //action functions
