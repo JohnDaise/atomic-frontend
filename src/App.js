@@ -15,6 +15,8 @@ class App extends Component {
       allInstruments: [],
       newList: [],
       selectedInstrument: null,
+      favoriteList: [],
+      shoppingCart: [],
       isModalOpen: false,
       isUpdateModalOpen: false,
       searchTerm: ""
@@ -137,10 +139,28 @@ filterList = () => {
 }
 }
 
+///Favorites
+
+addToFavorite = (instrument) =>{
+  this.setState({
+    favoriteList: [...this.state.favoriteList, instrument]
+  })
+}
+
+removeFromFavorite = (selectedInstrument) =>{
+  let newFavs;
+  newFavs = this.state.favoriteList.filter(instrument => instrument !== selectedInstrument )
+  this.setState({
+    favoriteList: newFavs
+  })
+}
+
+
+
+
 
   render() {
-    console.log(this.state.isUpdateModalOpen)
-    console.log(this.state.isModalOpen)
+    console.log(this.state.favoriteList)
     return (
       <div className="App">
         <header className="App-header">
@@ -155,6 +175,10 @@ filterList = () => {
           showDetail={this.showDetail}
           updateInstrument={this.updateInstrument}
           deleteInstrument={this.deleteInstrument}
+          addToFavorite={this.addToFavorite}
+          removeFromFavorite ={this.removeFromFavorite }
+          favoriteList={this.state.favoriteList}
+          shoppingCart={this.state.shoppingCart}
           selectedInstrument={this.state.selectedInstrument}
           allInstruments={this.state.allInstruments}
           newList={this.state.newList}

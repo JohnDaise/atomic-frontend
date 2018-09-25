@@ -12,12 +12,11 @@ const Filter = (props) => {
 
 
   return(
-    <div>
+    <React.Fragment>
       <SortBy />
       <SearchInput handleChange={props.handleChange} />
       <SearchButton filterList={props.filterList}/>
-
-    </div>
+    </React.Fragment>
   )
 
 

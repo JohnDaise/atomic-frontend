@@ -22,7 +22,6 @@ class UpdateForm extends React.Component {
 
 
 handleChange = (e) => {
-    console.log([e.target.name], e.target.value),
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -33,10 +32,10 @@ render(){
 //  this.props.closeUpdateModal
     return(
       <Modal
-
         open={this.props.isUpdateModalOpen}
         onOpen={()=> this.props.openUpdateModal()}
         onClose={()=> this.props.closeUpdateModal()}
+        size={'large'}
          trigger={
           <Button >
             Update
@@ -48,39 +47,39 @@ render(){
             this.props.updateInstrument(e)}
           }>
           <Grid>
+            <h2> Edit Form </h2>
             <Grid.Column width={6}>
                 <label>
-                  Brand:
+                  <h3>Brand:</h3>
                   <input name="brand" type="text" value={this.state.brand} onChange={(e)=> this.handleChange(e)}/>
                 </label>
                 <label>
-                  Name:
+                  <h3>Name:</h3>
                   <input name="name" type="text" value={this.state.name} onChange={(e)=> this.handleChange(e)}/>
                 </label>
                 <label>
-                  Color:
+                  <h3>Color:</h3>
                   <input name="color" type="text" value={this.state.color} onChange={(e)=> this.handleChange(e)}/>
                 </label>
                 <label>
-                  Conditon:
+                  <h3>Conditon:</h3>
                   <input name="condition" type="text" value={this.state.condition} onChange={(e)=> this.handleChange(e)}/>
                 </label>
             </Grid.Column>
             <Grid.Column width={6}>
                 <label>
-                  Description:
+                  <h3>Description:</h3>
                 <input name="description" type="text" value={this.state.description} onChange={(e)=> this.handleChange(e)}/>
                 </label>
                 <label>
-                  Picture:
+                  <h3>Picture:</h3>
                 <input name="pic_url" type="text" value={this.state.pic_url} onChange={(e)=> this.handleChange(e)}/>
                 </label>
                 <label>
-                  Price:
+                  <h3>Price:</h3>
                 <input name="price" type="integer" value={this.state.price} onChange={(e)=> this.handleChange(e)}/>
                 </label>
                 <button name="update" type="submit" value="Submit" id={`${this.props.instrument.category_id}-${this.props.instrument.id}`} >Update</button>
-
           </Grid.Column>
           </Grid>
         </Form>

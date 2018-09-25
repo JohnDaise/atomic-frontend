@@ -32,13 +32,13 @@ this.handleChange = (e) => {
 
 
   return(
-    <div>
+    <React.Fragment>
       <select>
         {this.choices.map( option =>
           <option key={option.value} value={option.value}>{option.text}</option>
         )}
       </select>
-    </div>
+    </React.Fragment>
   )
 }
 

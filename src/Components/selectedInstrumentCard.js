@@ -4,10 +4,23 @@ import { Grid, Image, Card, Header, Modal, Button, Icon } from 'semantic-ui-reac
 
 
 class SelectedInstrumentCard extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      active: props.favoriteList.includes(this.props.instrument)
+    }
 
-  state = {}
+  }
 
-  handleClick = () => this.setState({ active: !this.state.active })
+  handleClick = () => {
+    this.setState({
+      active: !this.state.active
+    })
+    console.log(this.state.active)
+    {!this.state.active ? this.props.addToFavorite(this.props.instrument):
+      this.props.removeFromFavorite(this.props.instrument)
+    }
+ }
 
   handleUpdate = () => {
     console.log('render update form')
@@ -28,8 +41,8 @@ render(){
                 <Card>
                 <Card.Header as='h3'>{this.props.instrument.brand} {this.props.instrument.name}</Card.Header>
                 {this.props.instrument.category_id === 2 ?
-                  <Image src={this.props.instrument.pic_url} size='medium' rounded={true} centered verticalAlign='middle' />
-                  :<Image src={this.props.instrument.pic_url} size='small' rounded={true} centered verticalAlign='middle' />}
+                  <Image wrapped src={this.props.instrument.pic_url} size='medium' rounded={true} centered verticalAlign='middle' />
+                  :<Image wrapped src={this.props.instrument.pic_url} size='small' rounded={true} centered verticalAlign='middle' />}
                 </Card>
                 </Grid.Column>
                 <Grid.Column width={6}>
@@ -53,7 +66,7 @@ render(){
                   <div>
                     <Button.Group >
                       <Button primary onClick={()=> this.props.closeModal()}>BUY NOW</Button>
-                      <Button secondary toggle active={active} onClick={this.handleClick}>
+                      <Button secondary toggle active={active} onClick={()=>this.handleClick()} id={`${this.props.instrument.category_id}-${this.props.instrument.id}`}>
                          <Icon name='heart' />
                         Favorite
                       </Button>

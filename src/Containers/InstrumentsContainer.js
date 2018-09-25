@@ -12,11 +12,15 @@ class InstrumentsContainer extends React.Component {
 
 render(){
   return(
-    <div>
+    <React.Fragment>
       {this.props.isModalOpen ? <SelectedInstrumentCard
         instrument={this.props.selectedInstrument}
         updateInstrument={this.props.updateInstrument}
         deleteInstrument={this.props.deleteInstrument}
+        addToFavorite={this.props.addToFavorite}
+        removeFromFavorite ={this.props.removeFromFavorite}
+        favoriteList={this.props.favoriteList}
+        shoppingCart={this.props.shoppingCart}
         isModalOpen={this.props.isModalOpen}
         closeModal={this.props.closeModal}
         isUpdateModalOpen={this.props.isUpdateModalOpen}
@@ -40,7 +44,7 @@ render(){
                 />
         )}
       </Grid>
-    </div>
+    </React.Fragment>
   )
 };
 
