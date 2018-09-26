@@ -16,10 +16,9 @@ class SelectedInstrumentCard extends React.Component {
     this.setState({
       active: !this.state.active
     })
-    console.log(this.state.active)
-    {!this.state.active ? this.props.addToFavorite(this.props.instrument):
+    !this.state.active ? this.props.addToFavorite(this.props.instrument):
       this.props.removeFromFavorite(this.props.instrument)
-    }
+    
  }
 
   handleUpdate = () => {
@@ -65,7 +64,7 @@ render(){
                 <Grid.Column width={4}>
                   <div>
                     <Button.Group >
-                      <Button primary onClick={()=> this.props.closeModal()}>BUY NOW</Button>
+                      <Button primary onClick={()=> this.props.closeModal()}>Add to Cart</Button>
                       <Button secondary toggle active={active} onClick={()=>this.handleClick()} id={`${this.props.instrument.category_id}-${this.props.instrument.id}`}>
                          <Icon name='heart' />
                         Favorite

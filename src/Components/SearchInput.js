@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from 'semantic-ui-react'
+import { Input, Segment } from 'semantic-ui-react'
 
 
 
@@ -9,7 +9,9 @@ const SearchInput = (props) => {
 
 
   return(
-    <Input placeholder="Search..." onChange={(e)=>props.handleChange(e.target.value)}></Input>
+     <Segment >
+       <Input  size='large' placeholder="Search..." onChange={(e)=>props.handleChange(e.target.value)}></Input>
+    </Segment>
   )
 
 

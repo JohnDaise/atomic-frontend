@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Button, Icon, Modal } from 'semantic-ui-react'
+import { Image, Button, Icon } from 'semantic-ui-react'
 import FavoriteList from './FavoriteList'
 
 
