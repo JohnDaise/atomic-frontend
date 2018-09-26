@@ -133,6 +133,79 @@ return (
   }
 
 
+  filterBySort = (e, { value }) => {
+    let x = { value };
+
+    (x.value)  ?
+      switch (x) {
+          case "Price Low to High":
+              console.log('sorted by price: low to high')
+              this.state.allInstruments.sort(function(a, b){
+                   return a.price - b.price;
+                });
+                break;
+          case "Price High to Low":
+              console.log('sorted by price: high to low')
+              this.state.allInstruments.sort(function(a, b){
+                   return b.price - a.price;
+                   });
+                   break;
+          case "Condition":
+              console.log('sorted by condition')
+              this.state.allInstruments.sort(function(a, b) {
+                   return a.condition.localeCompare(b.condition);
+                        })
+                        break;
+          case "Brand":
+            console.log('sorted by brand')
+              this.state.allInstruments.sort(function(a, b) {
+                  return a.brand.localeCompare(b.brand);
+                     })
+              break;
+          }
+      : null;
+
+}
+
+
+
+
+// //this function should use case/swtich situtation and then render all instruments on change
+//
+// // sort by name
+//     this.state.allInstruments.sort(function(a, b) {
+//            return a.name.localeCompare(b.name);
+//             })
+//
+// // sort by condition
+//     this.state.allInstruments.sort(function(a, b) {
+//            return a.condition.localeCompare(b.condition);
+//             })
+//
+// //sort by brand
+//     this.state.allInstruments.sort(function(a, b) {
+//            return a.brand.localeCompare(b.brand);
+//             })
+//
+// //sort by color
+//             this.state.allInstruments.sort(function(a, b) {
+//            return a.color.localeCompare(b.color);
+//             })
+// //sort by price low to high
+//           this.state.allInstruments.sort(function(a, b){
+//             return a.price - b.price;
+//           });
+//
+//   //sort by price high to low
+//           this.state.allInstruments.sort(function(a, b){
+//             return b.price - a.price;
+//           });
+
+
+
+
+
+
 //     search === instrument.brand.toLowerCase() ||
 //     search === instrument.name.toLowerCase() ||
 //     search === instrument.color.toLowerCase() ||
@@ -161,6 +234,7 @@ removeFromFavorite = (selectedInstrument) =>{
 
 
   render() {
+    console.log(this.filterBySort())
     return (
       console.log(this.state.allInstruments),
       <div className="App">
@@ -173,6 +247,7 @@ removeFromFavorite = (selectedInstrument) =>{
          searchTerm={this.state.searchTerm}
          handleChange={this.handleChange}
          filterList={this.filterList}
+         filterBySort={this.filterBySort}
          />
         <InstrumentsContainer
           showDetail={this.showDetail}

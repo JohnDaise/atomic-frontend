@@ -3,8 +3,8 @@ import { Dropdown } from 'semantic-ui-react'
 
 
 class SortBy extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state={
       value:{
         text: '',
@@ -13,7 +13,15 @@ class SortBy extends React.Component {
     }
   }
 
-handleChange = (e, { value }) => this.setState({ value })
+handleChange = (e, { value }) => {
+  this.setState({ value })
+  return this.state.value
+}
+
+///need to find a way to capture state of this dropdown and place into this callback
+// props.filterBySort = (this.state.value) => {
+//
+// }
 
 
 render(){
@@ -42,7 +50,7 @@ render(){
         <Dropdown
           fluid selection options={this.choices}
           size='small'
-          onChange={this.handleChange}
+          onChange={(e, { value })=>this.props.filterBySort(e, { value })}
           placeholder='Sort By'
           name="choices"
           selection

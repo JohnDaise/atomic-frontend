@@ -12,7 +12,7 @@ const Filter = (props) => {
 
   return(
     <React.Fragment>
-      <SortBy />
+      <SortBy filterBySort={props.filterBySort}/>
       <SearchInput filterList={props.filterList} handleChange={props.handleChange} />
     </React.Fragment>
   )
