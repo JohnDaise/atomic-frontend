@@ -28,21 +28,14 @@ render(){
         closeUpdateModal={this.props.closeUpdateModal}
         /> : null}
       <Grid centered columns={3} >
-        { this.props.newList.length === 0 ? this.props.allInstruments.map(instrument =>
+        { this.props.allInstruments.map(instrument =>
           <InstrumentCard
             key={`${instrument.category_id}-${instrument.id}`}
             showDetail={this.props.showDetail}
             instrument={instrument}
             isModalOpen={this.props.isModalOpen}
-            /> ):
-            this.props.newList.map(instrument =>
-              <InstrumentCard
-                key={`${instrument.category_id}-${instrument.id}`}
-                showDetail={this.props.showDetail}
-                instrument={instrument}
-                isModalOpen={this.props.isModalOpen}
-                />
-        )}
+            /> )
+          }
       </Grid>
     </React.Fragment>
   )

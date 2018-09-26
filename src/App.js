@@ -13,7 +13,6 @@ class App extends Component {
     super()
     this.state={
       allInstruments: [],
-      newList: [],
       selectedInstrument: null,
       favoriteList: [],
       shoppingCart: [],
@@ -122,22 +121,24 @@ handleChange = (input) =>{
 
 
 filterList = () => {
-      let search = this.state.searchTerm.toLowerCase()
-  const newList = this.state.allInstruments.slice().filter( instrument =>
-    search === instrument.brand.toLowerCase() ||
-    search === instrument.name.toLowerCase() ||
-    search === instrument.color.toLowerCase() ||
-    search === instrument.condition.toLowerCase() ||
-    search === instrument.category.name.toLowerCase()
-  )
-  if (newList.length === 0 && search.length > 0) {
-    window.alert("No Matches Found")
-  } else {
-  this.setState({
-    newList: newList
-  })
-}
-}
+return (
+  this.state.allInstruments.filter( instrument => (
+    instrument.name.toLowerCase().includes(this.state.searchTerm) ||
+    instrument.brand.toLowerCase().includes(this.state.searchTerm) ||
+    instrument.color.toLowerCase().includes(this.state.searchTerm) ||
+    instrument.condition.toLowerCase().includes(this.state.searchTerm) ||
+    instrument.category.name.toLowerCase().includes(this.state.searchTerm)
+    ))
+    )
+  }
+
+
+//     search === instrument.brand.toLowerCase() ||
+//     search === instrument.name.toLowerCase() ||
+//     search === instrument.color.toLowerCase() ||
+//     search === instrument.condition.toLowerCase() ||
+//     search === instrument.category.name.toLowerCase()
+//   )
 
 ///Favorites
 
@@ -160,11 +161,13 @@ removeFromFavorite = (selectedInstrument) =>{
 
 
   render() {
-    console.log(this.state.favoriteList)
     return (
+      console.log(this.state.allInstruments),
       <div className="App">
         <header className="App-header">
-          <Navbar className="navbar" />
+        <Navbar className="navbar"
+          favoriteList={this.state.favoriteList}
+         />
         </header><br/>
        <Filter
          searchTerm={this.state.searchTerm}
@@ -176,11 +179,11 @@ removeFromFavorite = (selectedInstrument) =>{
           updateInstrument={this.updateInstrument}
           deleteInstrument={this.deleteInstrument}
           addToFavorite={this.addToFavorite}
-          removeFromFavorite ={this.removeFromFavorite }
+          removeFromFavorite ={this.removeFromFavorite}
           favoriteList={this.state.favoriteList}
           shoppingCart={this.state.shoppingCart}
           selectedInstrument={this.state.selectedInstrument}
-          allInstruments={this.state.allInstruments}
+          allInstruments={this.filterList()}
           newList={this.state.newList}
           isModalOpen={this.state.isModalOpen}
           closeModal={this.closeModal}
