@@ -43,7 +43,6 @@ render(){
         <Modal.Content>
         <Form onSubmit={(e)=>
             {
-            e.preventDefault();
             this.props.updateInstrument(e)}
           }>
           <Grid>

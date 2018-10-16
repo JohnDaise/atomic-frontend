@@ -25,7 +25,6 @@ handleChange = (e, { value }) => {
 
 
 render(){
-  console.log(this.state)
   const { value } = this.state
   const choices= [
     {
@@ -48,14 +47,12 @@ render(){
   return(
     <React.Fragment>
         <Dropdown
-          fluid selection options={this.choices}
+          fluid selection
           size='small'
           onChange={(e, { value })=>this.props.filterBySort(e, { value })}
           placeholder='Sort By'
           name="choices"
-          selection
           options={choices}
-          value={value}
         />
     </React.Fragment>
   )}

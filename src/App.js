@@ -35,6 +35,23 @@ fetchInstruments = () => {
 
 
 componentDidMount(){
+  fetch('http://localhost:3001/api/v1/users', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
+  },
+  body: JSON.stringify({
+    user: {
+      username: 'guy',
+      password: 'hi',
+      bio: 'King of Flavortown, USA',
+      avatar: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Guy_Fieri_at_Guantanamo_2.jpg'
+    }
+  })
+})
+  .then(r => r.json())
+  .then(console.log)
   this.fetchInstruments();
 }
 
@@ -67,13 +84,14 @@ updateInstrument = (e) => {
     })
   }).then(res=> res.json())
   .then(json =>
-    this.setState({
+    {this.setState({
       selectedInstrument: json
     })
+    this.fetchInstruments()} //brought this fetch method inside the 'then' statement so that it renders sooner
   );
   console.log(this.showDetail(id))
   this.closeUpdateModal();
-  this.fetchInstruments();
+
 }
 
 deleteInstrument = (e) => {
@@ -134,36 +152,38 @@ return (
 
 
   filterBySort = (e, { value }) => {
-    let x = { value };
 
-    (x.value)  ?
-      switch (x) {
-          case "Price Low to High":
-              console.log('sorted by price: low to high')
-              this.state.allInstruments.sort(function(a, b){
-                   return a.price - b.price;
-                });
-                break;
-          case "Price High to Low":
-              console.log('sorted by price: high to low')
-              this.state.allInstruments.sort(function(a, b){
-                   return b.price - a.price;
-                   });
-                   break;
-          case "Condition":
-              console.log('sorted by condition')
-              this.state.allInstruments.sort(function(a, b) {
-                   return a.condition.localeCompare(b.condition);
-                        })
-                        break;
-          case "Brand":
-            console.log('sorted by brand')
-              this.state.allInstruments.sort(function(a, b) {
-                  return a.brand.localeCompare(b.brand);
-                     })
-              break;
-          }
-      : null;
+    // let x = { value };
+    // if( x ) {
+    //   switch (x.value) {
+    //       case "Price Low to High":
+    //           console.log('sorted by price: low to high')
+    //           this.state.allInstruments.sort(function(a, b){
+    //                return a.price - b.price;
+    //             });
+    //             break;
+    //       case "Price High to Low":
+    //           console.log('sorted by price: high to low')
+    //           this.state.allInstruments.sort(function(a, b){
+    //                return b.price - a.price;
+    //                });
+    //                break;
+    //       case "Condition":
+    //           console.log('sorted by condition')
+    //           this.state.allInstruments.sort(function(a, b) {
+    //                return a.condition.localeCompare(b.condition);
+    //                     })
+    //                     break;
+    //       case "Brand":
+    //         console.log('sorted by brand')
+    //           this.state.allInstruments.sort(function(a, b) {
+    //               return a.brand.localeCompare(b.brand);
+    //                  })
+    //           break;
+    //       default:
+    //         console.log('default')
+    //       }
+    //   }
 
 }
 
@@ -234,9 +254,7 @@ removeFromFavorite = (selectedInstrument) =>{
 
 
   render() {
-    console.log(this.filterBySort())
     return (
-      console.log(this.state.allInstruments),
       <div className="App">
         <header className="App-header">
         <Navbar className="navbar"

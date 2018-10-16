@@ -1,8 +1,8 @@
 import React from 'react';
-import InstrumentCard from '../Components/InstrumentCard'
-import SelectedInstrumentCard from '../Components/selectedInstrumentCard'
-import UpdateForm from '../Components/UpdateForm'
-import { Grid } from 'semantic-ui-react'
+import InstrumentCard from '../Components/InstrumentCard';
+import SelectedInstrumentCard from '../Components/selectedInstrumentCard';
+import UpdateForm from '../Components/UpdateForm';
+import { Grid } from 'semantic-ui-react';
 
 
 
@@ -13,6 +13,7 @@ class InstrumentsContainer extends React.Component {
 render(){
   return(
     <React.Fragment>
+
       {this.props.isModalOpen ? <SelectedInstrumentCard
         instrument={this.props.selectedInstrument}
         updateInstrument={this.props.updateInstrument}
